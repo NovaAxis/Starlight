@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlight - The Ultimate Development Utility</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <style>
+        /* CSS код из предыдущего ответа */
+        body { background: #0A0A0A; color: white; font-family: 'Inter', sans-serif; }
+        .nav-gradient { background: linear-gradient(180deg, #0A0A0A 0%, rgba(10, 10, 10, 0.95) 100%); }
+        .hero-gradient { background: radial-gradient(50% 50% at 50% 50%, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0) 100%); }
+        .button-primary { background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%); transition: all 0.3s ease; }
+        .button-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3); }
+        .button-secondary { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .button-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
+        .bg-card { background: #111111; }
+        .bg-dark { background: #0A0A0A; }
+        .border-border { border-color: #1F1F1F; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); border-color: #6366F1; }
+        .popup-overlay { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); }
+        .popup-content { background: #111111; border: 1px solid #1F1F1F; border-radius: 12px; }
+        .loading-spinner { width: 20px; height: 20px; border: 2px solid #ffffff; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .animate-slide-in { animation: slideIn 0.3s ease-out forwards; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full nav-gradient border-b border-border z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">⭐</span>
+                    </div>
+                    <span class="text-xl font-bold text-white">Starlight</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Home</a>
+                    <a href="#download" class="text-gray-300 hover:text-white font-medium transition-colors">Download</a>
+                    <a href="#premium" class="text-gray-300 hover:text-white font-medium transition-colors">Premium</a>
+                    <a href="#contributors" class="text-gray-300 hover:text-white font-medium transition-colors">Contributors</a>
+                </div>
+                <a href="#" class="button-secondary px-6 py-2 rounded-lg text-white font-medium flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    <span>Official Discord Server</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 relative">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="flex justify-center mb-8">
+                <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
+                    <span class="text-4xl text-white">⭐</span>
+                </div>
+            </div>
+            <h1 class="text-6xl md:text-7xl font-bold mb-6 text-white">Starlight</h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                The ultimate solution for undetected, stable, and performant development
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
+                <button onclick="downloadCO()" class="button-primary px-8 py-4 rounded-lg text-white font-semibold text-lg">
+                    Download Now
+                </button>
+                <a href="#premium" class="button-secondary px-8 py-4 rounded-lg text-white font-semibold text-lg">
+                    View Premium
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+                <div class="text-center p-6 rounded-xl bg-card border border-border card-hover">
+                    <div class="text-3xl font-bold text-white mb-2" id="stat-users">10K+</div>
+                    <div class="text-gray-400">Active Users</div>
+                </div>
+                <div class="text-center p-6 rounded-xl bg-card border border-border card-hover">
+                    <div class="text-3xl font-bold text-white mb-2">99.9%</div>
+                    <div class="text-gray-400">Uptime</div>
+                </div>
+                <div class="text-center p-6 rounded-xl bg-card border border-border card-hover">
+                    <div class="text-3xl font-bold text-white mb-2">24/7</div>
+                    <div class="text-gray-400">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="bg-card rounded-2xl p-12 border border-border">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Shine?</h2>
+                <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                    Join thousands of developers who have already elevated their workflow with Starlight.
+                </p>
+                <button onclick="downloadCO()" class="button-primary px-12 py-4 rounded-xl text-white font-semibold text-lg">
+                    Download Starlight Now
+                </button>
+                <p class="text-gray-500 text-sm mt-4">Available for Windows, macOS, and Linux</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Попап с капчей -->
+    <div id="captcha-popup" class="fixed inset-0 popup-overlay z-50 hidden flex items-center justify-center p-4">
+        <div class="popup-content max-w-md w-full p-8 animate-slide-in">
+            <button onclick="hideCaptchaPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">×</button>
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
+                    <span class="text-2xl text-white">⭐</span>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">Security Check</h2>
+                <p class="text-gray-400">Verify you're human to download Starlight</p>
+            </div>
+            <div id="turnstile-container" class="mb-6"></div>
+            <div id="download-status" class="hidden">
+                <div class="flex items-center justify-center gap-3 text-white">
+                    <div class="loading-spinner"></div>
+                    <span>Preparing your download...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Попап выбора ОС -->
+    <div id="os-select-popup" class="fixed inset-0 popup-overlay z-50 hidden flex items-center justify-center p-4">
+        <div class="popup-content max-w-md w-full p-8 animate-slide-in">
+            <button onclick="hideOSSelectPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">×</button>
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
+                    <span class="text-2xl text-white">⭐</span>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">Select Your OS</h2>
+                <p class="text-gray-400">Choose your operating system to download Starlight</p>
+            </div>
+            <div class="space-y-4">
+                <button onclick="startDownload('windows')" class="w-full button-secondary py-4 rounded-lg text-white font-semibold flex items-center justify-center space-x-3">
+                    <span>🪟</span>
+                    <span>Windows</span>
+                </button>
+                <button onclick="startDownload('macos')" class="w-full button-secondary py-4 rounded-lg text-white font-semibold flex items-center justify-center space-x-3">
+                    <span>🍎</span>
+                    <span>macOS</span>
+                </button>
+                <button onclick="startDownload('linux')" class="w-full button-secondary py-4 rounded-lg text-white font-semibold flex items-center justify-center space-x-3">
+                    <span>🐧</span>
+                    <span>Linux</span>
+                </button>
+            </div>
+            <div id="download-status-os" class="hidden mt-6">
+                <div class="flex items-center justify-center gap-3 text-white">
+                    <div class="loading-spinner"></div>
+                    <span>Preparing download...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript код из предыдущего ответа
+        let turnstileWidgetId = null;
+        let captchaToken = null;
+        let downloadLinks = {
+            windows: "/downloads/starlight-windows.exe",
+            macos: "/downloads/starlight-macos.dmg", 
+            linux: "/downloads/starlight-linux.appimage"
+        };
+
+        function downloadCO() { showCaptchaPopup(); }
+
+        function showCaptchaPopup() {
+            document.getElementById('captcha-popup').classList.remove('hidden');
+            if (!turnstileWidgetId) {
+                turnstile.ready(function() {
+                    turnstileWidgetId = turnstile.render("#turnstile-container", {
+                        sitekey: "1x00000000000000000000AA",
+                        callback: function(token) {
+                            captchaToken = token;
+                            onCaptchaComplete();
+                        }
+                    });
+                });
+            }
+        }
+
+        function hideCaptchaPopup() {
+            document.getElementById('captcha-popup').classList.add('hidden');
+        }
+
+        function onCaptchaComplete() {
+            document.getElementById('download-status').classList.remove('hidden');
+            setTimeout(() => {
+                hideCaptchaPopup();
+                showOSSelectPopup();
+            }, 1500);
+        }
+
+        function showOSSelectPopup() {
+            document.getElementById('os-select-popup').classList.remove('hidden');
+        }
+
+        function hideOSSelectPopup() {
+            document.getElementById('os-select-popup').classList.add('hidden');
+        }
+
+        function startDownload(os) {
+            const statusElement = document.getElementById('download-status-os');
+            statusElement.classList.remove('hidden');
+            
+            setTimeout(() => {
+                alert(`Starlight for ${os.toUpperCase()} would start downloading now!\n\nIn a real website, this would download the actual file.`);
+                hideOSSelectPopup();
+                statusElement.classList.add('hidden');
+            }, 2000);
+        }
+
+        // Закрытие попапов
+        document.getElementById('captcha-popup').addEventListener('click', function(e) {
+            if (e.target === this) hideCaptchaPopup();
+        });
+
+        document.getElementById('os-select-popup').addEventListener('click', function(e) {
+            if (e.target === this) hideOSSelectPopup();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideCaptchaPopup();
+                hideOSSelectPopup();
+            }
+        });
+    </script>
+</body>
+</html>
