@@ -28,7 +28,22 @@
         .animate-slide-in { animation: slideIn 0.3s ease-out forwards; }
         .hidden { display: none !important; }
         .counter { font-variant-numeric: tabular-nums; }
-        .language-selector { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        /* Прозрачный language selector */
+        .language-selector { 
+            background: transparent !important; 
+            border: 1px solid rgba(255, 255, 255, 0.2) !important; 
+            backdrop-filter: blur(10px);
+        }
+        .language-selector select {
+            background: transparent !important;
+            border: none !important;
+            color: white !important;
+        }
+        .language-selector option {
+            background: #111111 !important;
+            color: white !important;
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -46,11 +61,12 @@
                     <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors" data-i18n="nav.home">Home</a>
                     <a href="#download" class="text-gray-300 hover:text-white font-medium transition-colors" data-i18n="nav.download">Download</a>
                     <a href="#contributors" class="text-gray-300 hover:text-white font-medium transition-colors" data-i18n="nav.contributors">Contributors</a>
+                    <a href="terms.html" class="text-gray-300 hover:text-white font-medium transition-colors">Terms</a>
                 </div>
                 <div class="flex items-center space-x-4">
                     <!-- Language Selector -->
-                    <div class="relative">
-                        <select id="language-select" class="language-selector px-3 py-2 rounded-lg text-white font-medium appearance-none cursor-pointer">
+                    <div class="relative language-selector">
+                        <select id="language-select" class="px-3 py-2 rounded-lg text-white font-medium appearance-none cursor-pointer bg-transparent">
                             <option value="en">🇺🇸 English</option>
                             <option value="ru">🇷🇺 Русский</option>
                         </select>
@@ -188,19 +204,6 @@
         </div>
     </section>
 
-    <!-- Стандартный вариант для Terms -->
-<div class="terms">
-    <h3>Terms of Use</h3>
-    <p><strong>We are a small development team, not a company.</strong></p>
-    <ul>
-        <li>No warranties provided</li>
-        <li>No guarantees of service</li>
-        <li>Not responsible for user actions</li>
-        <li>Use at your own risk</li>
-        <li>No liability assumed</li>
-    </ul>
-</div>
-
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-border">
         <div class="max-w-6xl mx-auto text-center">
@@ -216,7 +219,7 @@
                 The ultimate solution for undetected, stable, and performant development
             </p>
             <div class="flex justify-center space-x-6">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.terms">Terms</a>
+                <a href="terms.html" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.terms">Terms</a>
                 <a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.privacy">Privacy</a>
                 <a href="https://discord.gg/Eg98P4wf2V" target="_blank" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.discord">Discord</a>
             </div>
