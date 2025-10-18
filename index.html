@@ -28,6 +28,7 @@
         .animate-slide-in { animation: slideIn 0.3s ease-out forwards; }
         .hidden { display: none !important; }
         .counter { font-variant-numeric: tabular-nums; }
+        .language-selector { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
 <body class="font-sans">
@@ -42,16 +43,25 @@
                     <span class="text-xl font-bold text-white">Starlight</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors">Home</a>
-                    <a href="#download" class="text-gray-300 hover:text-white font-medium transition-colors">Download</a>
-                    <a href="#contributors" class="text-gray-300 hover:text-white font-medium transition-colors">Contributors</a>
+                    <a href="#" class="text-gray-300 hover:text-white font-medium transition-colors" data-i18n="nav.home">Home</a>
+                    <a href="#download" class="text-gray-300 hover:text-white font-medium transition-colors" data-i18n="nav.download">Download</a>
+                    <a href="#contributors" class="text-gray-300 hover:text-white font-medium transition-colors" data-i18n="nav.contributors">Contributors</a>
                 </div>
-                <a href="https://discord.gg/Eg98P4wf2V" target="_blank" class="button-secondary px-6 py-2 rounded-lg text-white font-medium flex items-center space-x-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
-                    </svg>
-                    <span>Official Discord Server</span>
-                </a>
+                <div class="flex items-center space-x-4">
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <select id="language-select" class="language-selector px-3 py-2 rounded-lg text-white font-medium appearance-none cursor-pointer">
+                            <option value="en">🇺🇸 English</option>
+                            <option value="ru">🇷🇺 Русский</option>
+                        </select>
+                    </div>
+                    <a href="https://discord.gg/Eg98P4wf2V" target="_blank" class="button-secondary px-6 py-2 rounded-lg text-white font-medium flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                        </svg>
+                        <span data-i18n="nav.discord">Official Discord Server</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -66,22 +76,22 @@
                 </div>
             </div>
             <h1 class="text-6xl md:text-7xl font-bold mb-6 text-white">Starlight</h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed" data-i18n="hero.subtitle">
                 The ultimate solution for undetected, stable, and performant development
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-                <button onclick="startDownload()" class="button-primary px-8 py-4 rounded-lg text-white font-semibold text-lg">
+                <button onclick="startDownload()" class="button-primary px-8 py-4 rounded-lg text-white font-semibold text-lg" data-i18n="hero.download">
                     Download Now
                 </button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
                 <div class="text-center p-6 rounded-xl bg-card border border-border card-hover">
                     <div class="text-3xl font-bold text-white mb-2 counter" id="active-users">200</div>
-                    <div class="text-gray-400">Active Users</div>
+                    <div class="text-gray-400" data-i18n="stats.users">Active Users</div>
                 </div>
                 <div class="text-center p-6 rounded-xl bg-card border border-border card-hover">
                     <div class="text-3xl font-bold text-white mb-2">99% UNC</div>
-                    <div class="text-gray-400">Undetected</div>
+                    <div class="text-gray-400" data-i18n="stats.undetected">Undetected</div>
                 </div>
             </div>
         </div>
@@ -95,8 +105,8 @@
                     <div class="w-16 h-16 mx-auto mb-6 rounded-xl bg-[#6366F1]/20 flex items-center justify-center">
                         <span class="text-2xl">🛡️</span>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Undetected</h3>
-                    <p class="text-gray-400">
+                    <h3 class="text-xl font-bold text-white mb-4" data-i18n="features.undetected.title">Undetected</h3>
+                    <p class="text-gray-400" data-i18n="features.undetected.description">
                         Advanced anti-detection systems ensure your workflow remains private and secure
                     </p>
                 </div>
@@ -104,8 +114,8 @@
                     <div class="w-16 h-16 mx-auto mb-6 rounded-xl bg-[#6366F1]/20 flex items-center justify-center">
                         <span class="text-2xl">⚡</span>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-4">High Performance</h3>
-                    <p class="text-gray-400">
+                    <h3 class="text-xl font-bold text-white mb-4" data-i18n="features.performance.title">High Performance</h3>
+                    <p class="text-gray-400" data-i18n="features.performance.description">
                         Optimized for speed and efficiency with minimal resource consumption
                     </p>
                 </div>
@@ -113,8 +123,8 @@
                     <div class="w-16 h-16 mx-auto mb-6 rounded-xl bg-[#6366F1]/20 flex items-center justify-center">
                         <span class="text-2xl">🔧</span>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Easy to Use</h3>
-                    <p class="text-gray-400">
+                    <h3 class="text-xl font-bold text-white mb-4" data-i18n="features.easy.title">Easy to Use</h3>
+                    <p class="text-gray-400" data-i18n="features.easy.description">
                         Intuitive interface designed for both beginners and advanced users
                     </p>
                 </div>
@@ -126,14 +136,14 @@
     <section id="download" class="py-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
             <div class="bg-card rounded-2xl p-12 border border-border">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Shine?</h2>
-                <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6" data-i18n="download.title">Ready to Shine?</h2>
+                <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto" data-i18n="download.subtitle">
                     Join thousands of developers who have already elevated their workflow with Starlight.
                 </p>
-                <button onclick="startDownload()" class="button-primary px-12 py-4 rounded-xl text-white font-semibold text-lg">
+                <button onclick="startDownload()" class="button-primary px-12 py-4 rounded-xl text-white font-semibold text-lg" data-i18n="download.button">
                     Download Starlight Now
                 </button>
-                <p class="text-gray-500 text-sm mt-4">Available for Windows</p>
+                <p class="text-gray-500 text-sm mt-4" data-i18n="download.available">Available for Windows</p>
             </div>
         </div>
     </section>
@@ -141,8 +151,8 @@
     <!-- Contributors Section -->
     <section id="contributors" class="py-20 px-6 bg-card">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Contributors</h2>
-            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6" data-i18n="contributors.title">Contributors</h2>
+            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto" data-i18n="contributors.subtitle">
                 Meet the amazing team behind Starlight
             </p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -151,28 +161,28 @@
                         <span class="text-white font-bold">N</span>
                     </div>
                     <h4 class="font-semibold text-white mb-1">NovaAxis</h4>
-                    <p class="text-gray-400 text-sm">Lead Developer</p>
+                    <p class="text-gray-400 text-sm" data-i18n="contributors.dev">Lead Developer</p>
                 </div>
                 <div class="text-center p-6 rounded-xl bg-dark border border-border card-hover">
                     <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
                         <span class="text-white font-bold">N</span>
                     </div>
                     <h4 class="font-semibold text-white mb-1">NovaAxis</h4>
-                    <p class="text-gray-400 text-sm">UI/UX Designer</p>
+                    <p class="text-gray-400 text-sm" data-i18n="contributors.designer">UI/UX Designer</p>
                 </div>
                 <div class="text-center p-6 rounded-xl bg-dark border border-border card-hover">
                     <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
                         <span class="text-white font-bold">Д</span>
                     </div>
                     <h4 class="font-semibold text-white mb-1">Димасик дилдасик ²³</h4>
-                    <p class="text-gray-400 text-sm">Quality Assurance</p>
+                    <p class="text-gray-400 text-sm" data-i18n="contributors.tester">Quality Assurance</p>
                 </div>
                 <div class="text-center p-6 rounded-xl bg-dark border border-border card-hover">
                     <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
                         <span class="text-white font-bold">S</span>
                     </div>
-                    <h4 class="font-semibold text-white mb-1">Support</h4>
-                    <p class="text-gray-400 text-sm">Community Manager</p>
+                    <h4 class="font-semibold text-white mb-1" data-i18n="contributors.support.name">Support</h4>
+                    <p class="text-gray-400 text-sm" data-i18n="contributors.support.role">Community Manager</p>
                 </div>
             </div>
         </div>
@@ -189,13 +199,13 @@
                     <span class="text-xl font-bold text-white">Starlight</span>
                 </div>
             </div>
-            <p class="text-gray-400 mb-6">
+            <p class="text-gray-400 mb-6" data-i18n="footer.description">
                 The ultimate solution for undetected, stable, and performant development
             </p>
             <div class="flex justify-center space-x-6">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms</a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy</a>
-                <a href="https://discord.gg/Eg98P4wf2V" target="_blank" class="text-gray-400 hover:text-white transition-colors">Discord</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.terms">Terms</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.privacy">Privacy</a>
+                <a href="https://discord.gg/Eg98P4wf2V" target="_blank" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.discord">Discord</a>
             </div>
             <div class="mt-8 text-gray-500 text-sm">
                 &copy; 2024 Starlight. All rights reserved.
@@ -203,7 +213,7 @@
         </div>
     </footer>
 
-    <!-- Попап загрузки -->
+    <!-- Download Popup -->
     <div id="download-popup" class="fixed inset-0 popup-overlay z-50 hidden flex items-center justify-center p-4">
         <div class="popup-content max-w-md w-full p-8 animate-slide-in">
             <button onclick="hideDownloadPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">×</button>
@@ -211,22 +221,146 @@
                 <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
                     <span class="text-2xl text-white">⭐</span>
                 </div>
-                <h2 class="text-2xl font-bold text-white mb-2">Download Starlight</h2>
-                <p class="text-gray-400">Your download will start automatically</p>
+                <h2 class="text-2xl font-bold text-white mb-2" data-i18n="popup.title">Download Starlight</h2>
+                <p class="text-gray-400" data-i18n="popup.subtitle">Your download will start automatically</p>
             </div>
             <div id="download-status" class="hidden">
                 <div class="flex items-center justify-center gap-3 text-white">
                     <div class="loading-spinner"></div>
-                    <span>Preparing download...</span>
+                    <span data-i18n="popup.preparing">Preparing download...</span>
                 </div>
             </div>
-            <button onclick="startRealDownload()" class="w-full button-primary py-4 rounded-lg text-white font-semibold mt-4">
+            <button onclick="startRealDownload()" class="w-full button-primary py-4 rounded-lg text-white font-semibold mt-4" data-i18n="popup.button">
                 Start Download
             </button>
         </div>
     </div>
 
     <script>
+        // Translation dictionary
+        const translations = {
+            en: {
+                // Navigation
+                "nav.home": "Home",
+                "nav.download": "Download",
+                "nav.contributors": "Contributors",
+                "nav.discord": "Official Discord Server",
+                
+                // Hero section
+                "hero.subtitle": "The ultimate solution for undetected, stable, and performant development",
+                "hero.download": "Download Now",
+                
+                // Stats
+                "stats.users": "Active Users",
+                "stats.undetected": "Undetected",
+                
+                // Features
+                "features.undetected.title": "Undetected",
+                "features.undetected.description": "Advanced anti-detection systems ensure your workflow remains private and secure",
+                "features.performance.title": "High Performance",
+                "features.performance.description": "Optimized for speed and efficiency with minimal resource consumption",
+                "features.easy.title": "Easy to Use",
+                "features.easy.description": "Intuitive interface designed for both beginners and advanced users",
+                
+                // Download section
+                "download.title": "Ready to Shine?",
+                "download.subtitle": "Join thousands of developers who have already elevated their workflow with Starlight",
+                "download.button": "Download Starlight Now",
+                "download.available": "Available for Windows",
+                
+                // Contributors
+                "contributors.title": "Contributors",
+                "contributors.subtitle": "Meet the amazing team behind Starlight",
+                "contributors.dev": "Lead Developer",
+                "contributors.designer": "UI/UX Designer",
+                "contributors.tester": "Quality Assurance",
+                "contributors.support.name": "Support",
+                "contributors.support.role": "Community Manager",
+                
+                // Footer
+                "footer.description": "The ultimate solution for undetected, stable, and performant development",
+                "footer.terms": "Terms",
+                "footer.privacy": "Privacy",
+                "footer.discord": "Discord",
+                
+                // Popup
+                "popup.title": "Download Starlight",
+                "popup.subtitle": "Your download will start automatically",
+                "popup.preparing": "Preparing download...",
+                "popup.button": "Start Download"
+            },
+            ru: {
+                // Navigation
+                "nav.home": "Главная",
+                "nav.download": "Скачать",
+                "nav.contributors": "Команда",
+                "nav.discord": "Официальный Discord",
+                
+                // Hero section
+                "hero.subtitle": "Лучшее решение для незаметной, стабильной и производительной разработки",
+                "hero.download": "Скачать сейчас",
+                
+                // Stats
+                "stats.users": "Активных пользователей",
+                "stats.undetected": "Необнаруживаемость",
+                
+                // Features
+                "features.undetected.title": "Незаметность",
+                "features.undetected.description": "Продвинутые системы анти-обнаружения обеспечивают приватность и безопасность",
+                "features.performance.title": "Высокая производительность",
+                "features.performance.description": "Оптимизировано для скорости и эффективности с минимальным потреблением ресурсов",
+                "features.easy.title": "Простота использования",
+                "features.easy.description": "Интуитивный интерфейс для начинающих и продвинутых пользователей",
+                
+                // Download section
+                "download.title": "Готовы сиять?",
+                "download.subtitle": "Присоединяйтесь к тысячам разработчиков, которые уже улучшили свой рабочий процесс с Starlight",
+                "download.button": "Скачать Starlight сейчас",
+                "download.available": "Доступно для Windows",
+                
+                // Contributors
+                "contributors.title": "Команда",
+                "contributors.subtitle": "Познакомьтесь с удивительной командой Starlight",
+                "contributors.dev": "Главный разработчик",
+                "contributors.designer": "UI/UX дизайнер",
+                "contributors.tester": "Тестировщик",
+                "contributors.support.name": "Поддержка",
+                "contributors.support.role": "Менеджер сообщества",
+                
+                // Footer
+                "footer.description": "Лучшее решение для незаметной, стабильной и производительной разработки",
+                "footer.terms": "Условия",
+                "footer.privacy": "Конфиденциальность",
+                "footer.discord": "Discord",
+                
+                // Popup
+                "popup.title": "Скачать Starlight",
+                "popup.subtitle": "Ваша загрузка начнется автоматически",
+                "popup.preparing": "Подготовка загрузки...",
+                "popup.button": "Начать загрузку"
+            }
+        };
+
+        // Current language
+        let currentLanguage = 'en';
+
+        // Function to change language
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+        }
+
         // Анимированный счетчик активных пользователей
         let currentUsers = 200;
         let targetUsers = 400;
@@ -239,7 +373,6 @@
                 if (currentUsers >= targetUsers) {
                     currentUsers = targetUsers;
                     isIncreasing = false;
-                    // Через некоторое время снова начнем увеличивать
                     setTimeout(() => {
                         isIncreasing = true;
                         targetUsers = 400 + Math.floor(Math.random() * 100);
@@ -254,8 +387,6 @@
             }
             
             usersElement.textContent = currentUsers;
-            
-            // Случайная задержка для более естественного вида
             const delay = 2000 + Math.random() * 3000;
             setTimeout(animateUsersCounter, delay);
         }
@@ -277,24 +408,23 @@
             const statusElement = document.getElementById('download-status');
             statusElement.classList.remove('hidden');
             
-            // Ссылка на реальный файл (замените на свою)
             const downloadUrl = 'https://github.com/NovaAxis/Starlight/raw/refs/heads/main/Starlight%20V1.0.zip';
             
             setTimeout(() => {
-                // Создаем ссылку для скачивания
                 const link = document.createElement('a');
                 link.href = downloadUrl;
                 link.download = 'Starlight-Setup.exe';
                 link.target = '_blank';
                 
-                // Добавляем на страницу и кликаем
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
                 
-                // Показываем сообщение об успехе
                 setTimeout(() => {
-                    alert('Starlight download started! Check your downloads folder.');
+                    alert(currentLanguage === 'en' 
+                        ? 'Starlight download started! Check your downloads folder.'
+                        : 'Загрузка Starlight началась! Проверьте папку загрузок.'
+                    );
                     hideDownloadPopup();
                     statusElement.classList.add('hidden');
                 }, 1000);
@@ -302,17 +432,19 @@
             }, 2000);
         }
 
-        // Закрытие попапа при клике вне его
+        // Event listeners
+        document.getElementById('language-select').addEventListener('change', function(e) {
+            changeLanguage(e.target.value);
+        });
+
         document.getElementById('download-popup').addEventListener('click', function(e) {
             if (e.target === this) hideDownloadPopup();
         });
 
-        // Закрытие попапа по Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') hideDownloadPopup();
         });
 
-        // Плавная прокрутка для навигации
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -326,12 +458,15 @@
             });
         });
 
-        // Запуск анимации счетчика при загрузке страницы
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Запускаем анимацию счетчика
-            setTimeout(animateUsersCounter, 1000);
+            // Load saved language preference
+            const savedLanguage = localStorage.getItem('preferred-language') || 'en';
+            document.getElementById('language-select').value = savedLanguage;
+            changeLanguage(savedLanguage);
             
-            // Показываем случайное начальное значение
+            // Start animations
+            setTimeout(animateUsersCounter, 1000);
             usersElement.textContent = 200 + Math.floor(Math.random() * 50);
         });
     </script>
