@@ -265,3 +265,25 @@ body {
 @media (min-width: 640px) {
     .sm\\:flex-row { flex-direction: row; }
 }
+
+/* Делаем стандартный селект прозрачным */
+select, option {
+    background: transparent !important;
+    border: 1px solid #ccc !important;
+}
+
+/* Убираем белый фон у всех элементов языка */
+* {
+    background: transparent !important;
+}
+
+/* Конкретно для языкового переключателя */
+.language-switcher,
+.locale-selector,
+.lang-select,
+[class*="language"],
+[class*="locale"] {
+    background: transparent !important;
+    border: 1px solid #666 !important;
+    border-radius: 4px !important;
+}
