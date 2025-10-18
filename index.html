@@ -70,22 +70,18 @@
                 The ultimate solution for undetected, stable, and performant development
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-                <button onclick="showOSSelectPopup()" class="button-primary px-8 py-4 rounded-lg text-white font-semibold text-lg">
+                <button onclick="startDownload()" class="button-primary px-8 py-4 rounded-lg text-white font-semibold text-lg">
                     Download Now
                 </button>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
                 <div class="text-center p-6 rounded-xl bg-card border border-border card-hover">
                     <div class="text-3xl font-bold text-white mb-2 counter" id="active-users">200</div>
                     <div class="text-gray-400">Active Users</div>
                 </div>
                 <div class="text-center p-6 rounded-xl bg-card border border-border card-hover">
                     <div class="text-3xl font-bold text-white mb-2">99% UNC</div>
-                    <div class="text-gray-400">99% sUNC</div>
-                </div>
-                <div class="text-center p-6 rounded-xl bg-card border border-border card-hover">
-                    <div class="text-3xl font-bold text-white mb-2">24/7</div>
-                    <div class="text-gray-400">Support</div>
+                    <div class="text-gray-400">Undetected</div>
                 </div>
             </div>
         </div>
@@ -134,10 +130,10 @@
                 <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
                     Join thousands of developers who have already elevated their workflow with Starlight.
                 </p>
-                <button onclick="showOSSelectPopup()" class="button-primary px-12 py-4 rounded-xl text-white font-semibold text-lg">
+                <button onclick="startDownload()" class="button-primary px-12 py-4 rounded-xl text-white font-semibold text-lg">
                     Download Starlight Now
                 </button>
-                <p class="text-gray-500 text-sm mt-4">Available for Windows, macOS, and Linux</p>
+                <p class="text-gray-500 text-sm mt-4">Available for Windows</p>
             </div>
         </div>
     </section>
@@ -152,23 +148,23 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="text-center p-6 rounded-xl bg-dark border border-border card-hover">
                     <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
-                        <span class="text-white font-bold">D</span>
+                        <span class="text-white font-bold">N</span>
                     </div>
-                    <h4 class="font-semibold text-white mb-1">Developer</h4>
+                    <h4 class="font-semibold text-white mb-1">NovaAxis</h4>
                     <p class="text-gray-400 text-sm">Lead Developer</p>
                 </div>
                 <div class="text-center p-6 rounded-xl bg-dark border border-border card-hover">
                     <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
-                        <span class="text-white font-bold">D</span>
+                        <span class="text-white font-bold">N</span>
                     </div>
-                    <h4 class="font-semibold text-white mb-1">Designer</h4>
+                    <h4 class="font-semibold text-white mb-1">NovaAxis</h4>
                     <p class="text-gray-400 text-sm">UI/UX Designer</p>
                 </div>
                 <div class="text-center p-6 rounded-xl bg-dark border border-border card-hover">
                     <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
-                        <span class="text-white font-bold">T</span>
+                        <span class="text-white font-bold">Д</span>
                     </div>
-                    <h4 class="font-semibold text-white mb-1">Tester</h4>
+                    <h4 class="font-semibold text-white mb-1">Димасик дилдасик ²³</h4>
                     <p class="text-gray-400 text-sm">Quality Assurance</p>
                 </div>
                 <div class="text-center p-6 rounded-xl bg-dark border border-border card-hover">
@@ -207,37 +203,26 @@
         </div>
     </footer>
 
-    <!-- Попап выбора ОС -->
-    <div id="os-select-popup" class="fixed inset-0 popup-overlay z-50 hidden flex items-center justify-center p-4">
+    <!-- Попап загрузки -->
+    <div id="download-popup" class="fixed inset-0 popup-overlay z-50 hidden flex items-center justify-center p-4">
         <div class="popup-content max-w-md w-full p-8 animate-slide-in">
-            <button onclick="hideOSSelectPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">×</button>
+            <button onclick="hideDownloadPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">×</button>
             <div class="text-center mb-6">
                 <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center">
                     <span class="text-2xl text-white">⭐</span>
                 </div>
-                <h2 class="text-2xl font-bold text-white mb-2">Select Your OS</h2>
-                <p class="text-gray-400">Choose your operating system to download Starlight</p>
+                <h2 class="text-2xl font-bold text-white mb-2">Download Starlight</h2>
+                <p class="text-gray-400">Your download will start automatically</p>
             </div>
-            <div class="space-y-4">
-                <button onclick="startDownload('windows')" class="w-full button-secondary py-4 rounded-lg text-white font-semibold flex items-center justify-center space-x-3">
-                    <span>🪟</span>
-                    <span>Windows</span>
-                </button>
-                <button onclick="startDownload('macos')" class="w-full button-secondary py-4 rounded-lg text-white font-semibold flex items-center justify-center space-x-3">
-                    <span>🍎</span>
-                    <span>macOS</span>
-                </button>
-                <button onclick="startDownload('linux')" class="w-full button-secondary py-4 rounded-lg text-white font-semibold flex items-center justify-center space-x-3">
-                    <span>🐧</span>
-                    <span>Linux</span>
-                </button>
-            </div>
-            <div id="download-status-os" class="hidden mt-6">
+            <div id="download-status" class="hidden">
                 <div class="flex items-center justify-center gap-3 text-white">
                     <div class="loading-spinner"></div>
                     <span>Preparing download...</span>
                 </div>
             </div>
+            <button onclick="startRealDownload()" class="w-full button-primary py-4 rounded-lg text-white font-semibold mt-4">
+                Start Download
+            </button>
         </div>
     </div>
 
@@ -276,47 +261,55 @@
         }
 
         // Функции для скачивания
-        function showOSSelectPopup() {
-            document.getElementById('os-select-popup').classList.remove('hidden');
+        function startDownload() {
+            showDownloadPopup();
         }
 
-        function hideOSSelectPopup() {
-            document.getElementById('os-select-popup').classList.add('hidden');
+        function showDownloadPopup() {
+            document.getElementById('download-popup').classList.remove('hidden');
         }
 
-        function startDownload(os) {
-            const statusElement = document.getElementById('download-status-os');
+        function hideDownloadPopup() {
+            document.getElementById('download-popup').classList.add('hidden');
+        }
+
+        function startRealDownload() {
+            const statusElement = document.getElementById('download-status');
             statusElement.classList.remove('hidden');
             
-            // Создаем fake ссылки для скачивания
-            const fakeDownloads = {
-                windows: "starlight-setup.exe",
-                macos: "starlight-macos.dmg", 
-                linux: "starlight-linux.AppImage"
-            };
+            // Ссылка на реальный файл (замените на свою)
+            const downloadUrl = 'https://github.com/starlight-dev/starlight/releases/download/v1.0.0/Starlight-Setup.exe';
             
             setTimeout(() => {
-                // Создаем временную ссылку для скачивания
+                // Создаем ссылку для скачивания
                 const link = document.createElement('a');
-                link.href = '#'; // В реальном сайте здесь будет ссылка на файл
-                link.download = fakeDownloads[os];
+                link.href = downloadUrl;
+                link.download = 'Starlight-Setup.exe';
+                link.target = '_blank';
+                
+                // Добавляем на страницу и кликаем
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
                 
                 // Показываем сообщение об успехе
-                alert(`Downloading Starlight for ${os.toUpperCase()}...\n\nIn a real implementation, this would download the actual file.`);
+                setTimeout(() => {
+                    alert('Starlight download started! Check your downloads folder.');
+                    hideDownloadPopup();
+                    statusElement.classList.add('hidden');
+                }, 1000);
                 
-                hideOSSelectPopup();
-                statusElement.classList.add('hidden');
             }, 2000);
         }
 
         // Закрытие попапа при клике вне его
-        document.getElementById('os-select-popup').addEventListener('click', function(e) {
-            if (e.target === this) hideOSSelectPopup();
+        document.getElementById('download-popup').addEventListener('click', function(e) {
+            if (e.target === this) hideDownloadPopup();
         });
 
         // Закрытие попапа по Escape
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') hideOSSelectPopup();
+            if (e.key === 'Escape') hideDownloadPopup();
         });
 
         // Плавная прокрутка для навигации
